@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Department>
+@{
+  ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+<p>@Html.ActionLink("Create New", "Create")</p>
+<ul>
+  @foreach (Department dept in Model) {
+    <li>@Html.ActionLink(dept.Name, "Edit", new { id = dept.Id }) | @Html.ActionLink("Delete", "Delete", new { id = dept.Id })</li>
+  }
+</ul>
