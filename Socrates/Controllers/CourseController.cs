@@ -83,5 +83,14 @@ namespace Socrates.Controllers
             return Json(courseTitles, JsonRequestBehavior.AllowGet);
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                context.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

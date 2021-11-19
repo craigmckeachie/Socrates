@@ -17,5 +17,6 @@ namespace Socrates.DataAccess
         void MarkAsDeleted(object obj);
 
         void SaveChanges();
+        void Dispose();
     }
 }
