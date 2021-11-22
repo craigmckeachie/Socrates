@@ -17,7 +17,7 @@ namespace Socrates.Controllers
             return View(departments);
         }
 
-        public ActionResult Find()
+        public ActionResult Find() 
         {
             return View();
         }
@@ -58,7 +58,7 @@ namespace Socrates.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Detail", new { id = id });
             }
-         
+
             var ecvm = new EditCourseViewModel();
             ecvm.Course = course;
             ecvm.Departments = context.GetAllDepartments().OrderBy(d => d.Name).ToList();
@@ -82,7 +82,7 @@ namespace Socrates.Controllers
             {
                 courseTitles = (from c in context.GetAllCourses()
                                 where c.Title.Contains(term)
-                                orderby c.Title 
+                                orderby c.Title
                                 select c.Title).ToList();
             }
             return Json(courseTitles, JsonRequestBehavior.AllowGet);

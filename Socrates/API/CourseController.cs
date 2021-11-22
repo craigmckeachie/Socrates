@@ -29,7 +29,11 @@ namespace Socrates.API
 
         public IEnumerable<Course> GetByTitle(string title)
         {
-            return context.GetAllCourses().Where(c => c.Title.Contains(title)).ToList();
+            System.Diagnostics.Debug.WriteLine(title);
+            throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            //return context.GetAllCourses().Where(c => c.Title.Contains(title)).ToList();
         }
+
+
     }
 }

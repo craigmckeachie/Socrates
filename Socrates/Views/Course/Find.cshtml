@@ -3,48 +3,49 @@
     ViewBag.Title = "Find";
 }
 
-<h2>Find Course</h2>
-
+<h1>Find Course!</h1>
 <div class="row">
-    <form class="col-md-12 form-inline">
-        <div class="form-group">
-            <input class="form-control" name="searchTerm" type="search" placeholder="Course Title" />
-            <button type="submit" class="btn btn-primary">Search</button>
-        </div>
+    <form class="col-md-12">
+        <input id="searchTerm"
+               name="searchTerm"
+               type="search"
+               placeholder="Enter Course Title" />
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    
 </div>
-<div class="row" style="margin-top: 30px;">
+<div class="row">
     <div class="col-md-12">
-        <div class=" list-group" id="searchResults">
-        </div>
+        <div id="searchResults" class="list-group"></div>
     </div>
 </div>
 
 @section Scripts{
-    <script>
+    <script type="text/javascript">
         $(function () {
-            $("form").on("submit", function (event) {
+            $("form").on("submit", function onClick(event) {
                 event.preventDefault();
-                $("#searchResults").text("Loading...");
-                var searchTerm = $("input[name='searchTerm']").val();
 
+                var searchTerm = $("#searchTerm").val();
                 var url = `/api/course?title=${searchTerm}`;
+                $("#searchResults").text("Loading...");
                 $.ajax({
-                    method: 'GET',
+                    method: "GET",
                     url: url,
                 }).then(function (courses) {
-                    console.log(courses);
-                    let html = '';
+                    var html = '';
                     courses.forEach(function (course) {
-                        html += `<div class='list-group-item '>${course.Title}</div>`;
-                    });
+                        html += `<div class="list-group-item">${course.Title}</div>`;
+                    })
                     $("#searchResults").html(html);
-                })
-
-            })
-
-        })
+                }).catch(function (error) {
+                    console.log(error);
+                    $("#searchResults").html("There was an error loading courses. Please try again.")
+                });
+            });
+            
+        });
     </script>
 
+
 }
+
