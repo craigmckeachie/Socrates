@@ -22,9 +22,14 @@ namespace Socrates.API
             context = SocratesContextFactory.GetContext(connStr, false);
         }
 
-        public IEnumerable<Course> Get()
+        public IEnumerable<Course> GetAll()
         {
             return context.GetAllCourses().ToList();
+        }
+
+        public IEnumerable<Course> GetByTitle(string title)
+        {
+            return context.GetAllCourses().Where(c => c.Title.Contains(title)).ToList();
         }
     }
 }

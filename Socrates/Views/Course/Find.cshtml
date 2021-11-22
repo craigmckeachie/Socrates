@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Find";
+}
+
+<h2>Find Course</h2>
+
+<div class="row">
+    <form class="col-md-12 form-inline">
+        <div class="form-group">
+            <input class="form-control" name="searchTerm" type="search" placeholder="Course Title" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    
+</div>
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-12">
+        <div class=" list-group" id="searchResults">
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("form").on("submit", function (event) {
+                event.preventDefault();
+                $("#searchResults").text("Loading...");
+                var searchTerm = $("input[name='searchTerm']").val();
+
+                var url = `/api/course?title=${searchTerm}`;
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                }).then(function (courses) {
+                    console.log(courses);
+                    let html = '';
+                    courses.forEach(function (course) {
+                        html += `<div class='list-group-item '>${course.Title}</div>`;
+                    });
+                    $("#searchResults").html(html);
+                })
+
+            })
+
+        })
+    </script>
+
+}

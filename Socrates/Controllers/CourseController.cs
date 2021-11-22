@@ -17,6 +17,11 @@ namespace Socrates.Controllers
             return View(departments);
         }
 
+        public ActionResult Find()
+        {
+            return View();
+        }
+
         public ActionResult Detail(int id)
         {
             var course = context.GetAllCourses().SingleOrDefault(c => c.Id == id);
