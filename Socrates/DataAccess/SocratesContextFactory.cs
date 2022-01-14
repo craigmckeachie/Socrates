@@ -11,7 +11,7 @@ namespace Socrates.DataAccess
         {
 
             var context = new SocratesContext(connStr, useProxies);
-            //context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             return context;
 
             // return new SocratesContext(connStr, useProxies);

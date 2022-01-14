@@ -52,6 +52,7 @@ namespace Socrates.Controllers
             var course = context.GetAllCourses().SingleOrDefault(c => c.Id == id);
             TryUpdateModel(course, "Course", collection);
             if (!CourseNumberIsUnique(course.Number, course.Id)) ModelState.AddModelError("Course.Number", "Course number already in use");
+            //context.MarkAsModified(course);
             if (ModelState.IsValid)
             {
                 course.Department = context.GetAllDepartments().SingleOrDefault(d => d.Id == departmentId);

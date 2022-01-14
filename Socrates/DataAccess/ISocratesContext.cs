@@ -14,6 +14,7 @@ namespace Socrates.DataAccess
 
         void MarkAsModified(object obj);
         void MarkAsAdded(object obj);
+        void MarkDepartmentAsAdded(Department department);
         void MarkAsDeleted(object obj);
 
         void SaveChanges();

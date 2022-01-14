@@ -39,7 +39,7 @@
                     $("#searchResults").html(html);
                 }).catch(function (error) {
                     console.log(error);
-                    $("#searchResults").html("There was an error loading courses. Please try again.")
+                    $("#searchResults").html("<div class='alert alert-danger'>There was an error loading courses. Please try again.</div>");
                 });
             });
             

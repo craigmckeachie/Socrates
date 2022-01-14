@@ -42,6 +42,15 @@ namespace Socrates.DataAccess
         public void MarkAsAdded(object obj)
         {
             Entry(obj).State = EntityState.Added;
+
+
+        }
+
+        public void MarkDepartmentAsAdded(Department department)
+        {
+ 
+            Departments.Add(department);
+
         }
 
         public void MarkAsDeleted(object obj)

@@ -61,7 +61,8 @@ namespace Socrates.Controllers
         {
             var dept = new Department();
             if (TryUpdateModel(dept, collection)) {
-                context.MarkAsAdded(dept);
+                //context.MarkAsAdded(dept);
+                context.MarkDepartmentAsAdded(dept);
                 context.SaveChanges();
                 return RedirectToAction("Index");
             }
